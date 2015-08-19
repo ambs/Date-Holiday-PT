@@ -1,4 +1,5 @@
 use Test::More tests => 385;
+use utf8;
 
 BEGIN {
 use_ok( 'Date::Holidays::PT' );
@@ -17,7 +18,7 @@ is_deeply(
      },
      3 => {
        29 => 'Sexta-feira Santa',
-       31 => 'Páscoa',
+       31 => 'PÃ¡scoa',
      },
      4 => {
        25 => 'Dia da Liberdade',
@@ -27,20 +28,20 @@ is_deeply(
        30 => 'Corpo de Deus',
      },
      6 => {
-       10 => 'Dia de Portugal, de Camões e das Comunidades',
+       10 => 'Dia de Portugal, de CamÃµes e das Comunidades',
      },
      8 => {
-       15 => 'Assunção da Virgem',
+       15 => 'AssunÃ§Ã£o de Nossa Senhora',
      },
     10 => {
-        5 => 'Dia da Implantação da República',
+        5 => 'Dia da ImplantaÃ§Ã£o da RepÃºblica',
      },
     11 => {
         1 => 'Dia de Todos-os-Santos',
      },
     12 => {
-        1 => 'Dia da Restauração da Independência',
-        8 => 'Imaculada Conceição',
+        1 => 'Dia da RestauraÃ§Ã£o da IndependÃªncia',
+        8 => 'Imaculada ConceiÃ§Ã£o',
        25 => 'Natal',
      },
   }
@@ -152,7 +153,7 @@ is($mh->is_pt_holiday( 2002,  3, 27), undef);
 is($mh->is_pt_holiday( 2002,  3, 28), undef);
 is($mh->is_pt_holiday( 2002,  3, 29), 'Sexta-feira Santa');
 is($mh->is_pt_holiday( 2002,  3, 30), undef);
-is($mh->is_pt_holiday( 2002,  3, 31), 'Páscoa');
+is($mh->is_pt_holiday( 2002,  3, 31), 'PÃ¡scoa');
 
 is($mh->is_pt_holiday( 2002,  4,  1), undef);
 is($mh->is_pt_holiday( 2002,  4,  2), undef);
@@ -226,7 +227,7 @@ is($mh->is_pt_holiday( 2002,  6,  6), undef);
 is($mh->is_pt_holiday( 2002,  6,  7), undef);
 is($mh->is_pt_holiday( 2002,  6,  8), undef);
 is($mh->is_pt_holiday( 2002,  6,  9), undef);
-is($mh->is_pt_holiday( 2002,  6, 10), 'Dia de Portugal, de Camões e das Comunidades');
+is($mh->is_pt_holiday( 2002,  6, 10), 'Dia de Portugal, de CamÃµes e das Comunidades');
 is($mh->is_pt_holiday( 2002,  6, 11), undef);
 is($mh->is_pt_holiday( 2002,  6, 12), undef);
 is($mh->is_pt_holiday( 2002,  6, 13), undef);
@@ -294,7 +295,7 @@ is($mh->is_pt_holiday( 2002,  8, 11), undef);
 is($mh->is_pt_holiday( 2002,  8, 12), undef);
 is($mh->is_pt_holiday( 2002,  8, 13), undef);
 is($mh->is_pt_holiday( 2002,  8, 14), undef);
-is($mh->is_pt_holiday( 2002,  8, 15), 'Assunção da Virgem');
+is($mh->is_pt_holiday( 2002,  8, 15), 'AssunÃ§Ã£o de Nossa Senhora');
 is($mh->is_pt_holiday( 2002,  8, 16), undef);
 is($mh->is_pt_holiday( 2002,  8, 17), undef);
 is($mh->is_pt_holiday( 2002,  8, 18), undef);
@@ -347,7 +348,7 @@ is($mh->is_pt_holiday( 2002, 10,  1), undef);
 is($mh->is_pt_holiday( 2002, 10,  2), undef);
 is($mh->is_pt_holiday( 2002, 10,  3), undef);
 is($mh->is_pt_holiday( 2002, 10,  4), undef);
-is($mh->is_pt_holiday( 2002, 10,  5), 'Dia da Implantação da República');
+is($mh->is_pt_holiday( 2002, 10,  5), 'Dia da ImplantaÃ§Ã£o da RepÃºblica');
 is($mh->is_pt_holiday( 2002, 10,  6), undef);
 is($mh->is_pt_holiday( 2002, 10,  7), undef);
 is($mh->is_pt_holiday( 2002, 10,  8), undef);
@@ -406,14 +407,14 @@ is($mh->is_pt_holiday( 2002, 11, 28), undef);
 is($mh->is_pt_holiday( 2002, 11, 29), undef);
 is($mh->is_pt_holiday( 2002, 11, 30), undef);
 
-is($mh->is_pt_holiday( 2002, 12,  1), 'Dia da Restauração da Independência');
+is($mh->is_pt_holiday( 2002, 12,  1), 'Dia da RestauraÃ§Ã£o da IndependÃªncia');
 is($mh->is_pt_holiday( 2002, 12,  2), undef);
 is($mh->is_pt_holiday( 2002, 12,  3), undef);
 is($mh->is_pt_holiday( 2002, 12,  4), undef);
 is($mh->is_pt_holiday( 2002, 12,  5), undef);
 is($mh->is_pt_holiday( 2002, 12,  6), undef);
 is($mh->is_pt_holiday( 2002, 12,  7), undef);
-is($mh->is_pt_holiday( 2002, 12,  8), 'Imaculada Conceição');
+is($mh->is_pt_holiday( 2002, 12,  8), 'Imaculada ConceiÃ§Ã£o');
 is($mh->is_pt_holiday( 2002, 12,  9), undef);
 is($mh->is_pt_holiday( 2002, 12, 10), undef);
 is($mh->is_pt_holiday( 2002, 12, 11), undef);
@@ -453,7 +454,7 @@ is_deeply(
      },
      3 => {
        29 => 'Sexta-feira Santa',
-       31 => 'Páscoa',
+       31 => 'PÃ¡scoa',
      },
      4 => {
        25 => 'Dia da Liberdade',
@@ -463,20 +464,20 @@ is_deeply(
        30 => 'Corpo de Deus',
      },
      6 => {
-       10 => 'Dia de Portugal, de Camões e das Comunidades',
+       10 => 'Dia de Portugal, de CamÃµes e das Comunidades',
      },
      8 => {
-       15 => 'Assunção da Virgem',
+       15 => 'AssunÃ§Ã£o de Nossa Senhora',
      },
     10 => {
-        5 => 'Dia da Implantação da República',
+        5 => 'Dia da ImplantaÃ§Ã£o da RepÃºblica',
      },
     11 => {
         1 => 'Dia de Todos-os-Santos',
      },
     12 => {
-        1 => 'Dia da Restauração da Independência',
-        8 => 'Imaculada Conceição',
+        1 => 'Dia da RestauraÃ§Ã£o da IndependÃªncia',
+        8 => 'Imaculada ConceiÃ§Ã£o',
        25 => 'Natal',
      },
   }

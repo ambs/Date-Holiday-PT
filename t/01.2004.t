@@ -1,4 +1,5 @@
 use Test::More tests => 383;
+use utf8;
 
 BEGIN {
 use_ok( 'Date::Holidays::PT' );
@@ -17,27 +18,27 @@ is_deeply(
      },
      4 => {
         9 => 'Sexta-feira Santa',
-       11 => 'Páscoa',
+       11 => 'PÃ¡scoa',
        25 => 'Dia da Liberdade',
      },
      5 => {
         1 => 'Dia do Trabalhador'
      },
      6 => {
-       10 => 'Dia de Portugal, de Camões e das Comunidades; Corpo de Deus',
+       10 => 'Dia de Portugal, de CamÃµes e das Comunidades; Corpo de Deus',
      },
      8 => {
-       15 => 'Assunção da Virgem',
+       15 => 'AssunÃ§Ã£o de Nossa Senhora',
      },
     10 => {
-        5 => 'Dia da Implantação da República',
+        5 => 'Dia da ImplantaÃ§Ã£o da RepÃºblica',
      },
     11 => {
         1 => 'Dia de Todos-os-Santos',
      },
     12 => {
-        1 => 'Dia da Restauração da Independência',
-        8 => 'Imaculada Conceição',
+        1 => 'Dia da RestauraÃ§Ã£o da IndependÃªncia',
+        8 => 'Imaculada ConceiÃ§Ã£o',
        25 => 'Natal',
      },
   }
@@ -151,7 +152,7 @@ is($mh->is_pt_holiday( 2004,  4,  7), undef);
 is($mh->is_pt_holiday( 2004,  4,  8), undef);
 is($mh->is_pt_holiday( 2004,  4,  9), 'Sexta-feira Santa');
 is($mh->is_pt_holiday( 2004,  4, 10), undef);
-is($mh->is_pt_holiday( 2004,  4, 11), 'Páscoa');
+is($mh->is_pt_holiday( 2004,  4, 11), 'PÃ¡scoa');
 is($mh->is_pt_holiday( 2004,  4, 12), undef);
 is($mh->is_pt_holiday( 2004,  4, 13), undef);
 is($mh->is_pt_holiday( 2004,  4, 14), undef);
@@ -213,7 +214,7 @@ is($mh->is_pt_holiday( 2004,  6,  6), undef);
 is($mh->is_pt_holiday( 2004,  6,  7), undef);
 is($mh->is_pt_holiday( 2004,  6,  8), undef);
 is($mh->is_pt_holiday( 2004,  6,  9), undef);
-is($mh->is_pt_holiday( 2004,  6, 10), 'Dia de Portugal, de Camões e das Comunidades; Corpo de Deus');
+is($mh->is_pt_holiday( 2004,  6, 10), 'Dia de Portugal, de CamÃµes e das Comunidades; Corpo de Deus');
 is($mh->is_pt_holiday( 2004,  6, 11), undef);
 is($mh->is_pt_holiday( 2004,  6, 12), undef);
 is($mh->is_pt_holiday( 2004,  6, 13), undef);
@@ -281,7 +282,7 @@ is($mh->is_pt_holiday( 2004,  8, 11), undef);
 is($mh->is_pt_holiday( 2004,  8, 12), undef);
 is($mh->is_pt_holiday( 2004,  8, 13), undef);
 is($mh->is_pt_holiday( 2004,  8, 14), undef);
-is($mh->is_pt_holiday( 2004,  8, 15), 'Assunção da Virgem');
+is($mh->is_pt_holiday( 2004,  8, 15), 'AssunÃ§Ã£o de Nossa Senhora');
 is($mh->is_pt_holiday( 2004,  8, 16), undef);
 is($mh->is_pt_holiday( 2004,  8, 17), undef);
 is($mh->is_pt_holiday( 2004,  8, 18), undef);
@@ -334,7 +335,7 @@ is($mh->is_pt_holiday( 2004, 10,  1), undef);
 is($mh->is_pt_holiday( 2004, 10,  2), undef);
 is($mh->is_pt_holiday( 2004, 10,  3), undef);
 is($mh->is_pt_holiday( 2004, 10,  4), undef);
-is($mh->is_pt_holiday( 2004, 10,  5), 'Dia da Implantação da República');
+is($mh->is_pt_holiday( 2004, 10,  5), 'Dia da ImplantaÃ§Ã£o da RepÃºblica');
 is($mh->is_pt_holiday( 2004, 10,  6), undef);
 is($mh->is_pt_holiday( 2004, 10,  7), undef);
 is($mh->is_pt_holiday( 2004, 10,  8), undef);
@@ -393,14 +394,14 @@ is($mh->is_pt_holiday( 2004, 11, 28), undef);
 is($mh->is_pt_holiday( 2004, 11, 29), undef);
 is($mh->is_pt_holiday( 2004, 11, 30), undef);
 
-is($mh->is_pt_holiday( 2004, 12,  1), 'Dia da Restauração da Independência');
+is($mh->is_pt_holiday( 2004, 12,  1), 'Dia da RestauraÃ§Ã£o da IndependÃªncia');
 is($mh->is_pt_holiday( 2004, 12,  2), undef);
 is($mh->is_pt_holiday( 2004, 12,  3), undef);
 is($mh->is_pt_holiday( 2004, 12,  4), undef);
 is($mh->is_pt_holiday( 2004, 12,  5), undef);
 is($mh->is_pt_holiday( 2004, 12,  6), undef);
 is($mh->is_pt_holiday( 2004, 12,  7), undef);
-is($mh->is_pt_holiday( 2004, 12,  8), 'Imaculada Conceição');
+is($mh->is_pt_holiday( 2004, 12,  8), 'Imaculada ConceiÃ§Ã£o');
 is($mh->is_pt_holiday( 2004, 12,  9), undef);
 is($mh->is_pt_holiday( 2004, 12, 10), undef);
 is($mh->is_pt_holiday( 2004, 12, 11), undef);
@@ -436,8 +437,8 @@ is($mh->is_pt_holiday(             ), undef);
 
 is($mh->is_pt_holiday( 2004,  2, 24), 'Entrudo');
 is($mh->is_pt_holiday( 2004,  4,  9), 'Sexta-feira Santa');
-is($mh->is_pt_holiday( 2004,  4, 11), 'Páscoa');
-is($mh->is_pt_holiday( 2004,  6, 10), 'Dia de Portugal, de Camões e das Comunidades; Corpo de Deus');
+is($mh->is_pt_holiday( 2004,  4, 11), 'PÃ¡scoa');
+is($mh->is_pt_holiday( 2004,  6, 10), 'Dia de Portugal, de CamÃµes e das Comunidades; Corpo de Deus');
 
 is_deeply(
   $mh->holidays(2004),
@@ -450,27 +451,27 @@ is_deeply(
      },
      4 => {
         9 => 'Sexta-feira Santa',
-       11 => 'Páscoa',
+       11 => 'PÃ¡scoa',
        25 => 'Dia da Liberdade',
      },
      5 => {
         1 => 'Dia do Trabalhador'
      },
      6 => {
-       10 => 'Dia de Portugal, de Camões e das Comunidades; Corpo de Deus',
+       10 => 'Dia de Portugal, de CamÃµes e das Comunidades; Corpo de Deus',
      },
      8 => {
-       15 => 'Assunção da Virgem',
+       15 => 'AssunÃ§Ã£o de Nossa Senhora',
      },
     10 => {
-        5 => 'Dia da Implantação da República',
+        5 => 'Dia da ImplantaÃ§Ã£o da RepÃºblica',
      },
     11 => {
         1 => 'Dia de Todos-os-Santos',
      },
     12 => {
-        1 => 'Dia da Restauração da Independência',
-        8 => 'Imaculada Conceição',
+        1 => 'Dia da RestauraÃ§Ã£o da IndependÃªncia',
+        8 => 'Imaculada ConceiÃ§Ã£o',
        25 => 'Natal',
      },
   }

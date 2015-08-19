@@ -3,6 +3,7 @@ package Date::Holidays::PT;
 use warnings;
 use strict;
 
+use utf8;
 use Date::Holidays::Super;
 use Date::Easter;
 use Time::JulianDay;
@@ -138,37 +139,39 @@ sub holidays {
           1 => 'Dia do Trabalhador',
        },
        6 => {
-         10 => 'Dia de Portugal, de Camões e das Comunidades',
+         10 => 'Dia de Portugal, de CamÃµes e das Comunidades',
        },
        8 => {
-         15 => 'Assunção de Nossa Senhora',
+         15 => 'AssunÃ§Ã£o de Nossa Senhora',
        },
       10 => {
- #         5 => 'Dia da Implantação da República',
+          ($year <= 2013) ? (5 => 'Dia da ImplantaÃ§Ã£o da RepÃºblica') : (),
        },
       11 => {
- #         1 => 'Dia de Todos-os-Santos',
+          ($year <= 2013) ? (1 => 'Dia de Todos-os-Santos') : (),
        },
       12 => {
-#          1 => 'Dia da Restauração da Independência',
-          8 => 'Imaculada Conceição',
+		  ($year <= 2013) ? (1 => 'Dia da RestauraÃ§Ã£o da IndependÃªncia') : (),
+          8 => 'Imaculada ConceiÃ§Ã£o',
          25 => 'Natal',
        },
   );
 
   my ($emonth, $eday) = gregorian_easter($year);
-  $holidays{$emonth}{$eday} = 'Páscoa';
+  $holidays{$emonth}{$eday} = 'PÃ¡scoa';
 
   my $jd = julian_day($year, $emonth, $eday);
 
-#  my (undef, $cmonth, $cday) = inverse_julian_day($jd - 47);
- # $holidays{$cmonth}{$cday} = 'Entrudo';
+  if ($year <= 2013) {
+	  my (undef, $cmonth, $cday) = inverse_julian_day($jd - 47);
+	  $holidays{$cmonth}{$cday} = 'Entrudo';
 
-  #my (undef, $bmonth, $bday) = inverse_julian_day($jd + 60);
-  #$holidays{$bmonth}{$bday} =
-   #           $holidays{$bmonth}{$bday} ?
-    #          $holidays{$bmonth}{$bday} . '; Corpo de Deus':
-     #         'Corpo de Deus';
+	  my (undef, $bmonth, $bday) = inverse_julian_day($jd + 60);
+	  $holidays{$bmonth}{$bday} =
+	             $holidays{$bmonth}{$bday} ?
+	            $holidays{$bmonth}{$bday} . '; Corpo de Deus':
+	           'Corpo de Deus';
+   }
 
   my (undef, $smonth, $sday) = inverse_julian_day($jd - 2);
   $holidays{$smonth}{$sday} = 'Sexta-feira Santa';
@@ -183,23 +186,23 @@ The following Portuguese holidays have fixed dates:
     Jan   1    Ano Novo
     Apr  25    Dia da Liberdade
     May   1    Dia do Trabalhador
-    Jun  10    Dia de Portugal, de Camões e das Comunidades
-    Aug  15    Assunção da Virgem
-    Oct   5    Dia da Implantação da República
+    Jun  10    Dia de Portugal, de CamÃµes e das Comunidades
+    Aug  15    AssunÃ§Ã£o da Virgem
+    Oct   5    Dia da ImplantaÃ§Ã£o da RepÃºblica
     Nov   1    Dia de Todos-os-Santos
        -- no longer holiday, maintained for completude
-    Dec   1    Dia da Restauração da Independência
+    Dec   1    Dia da RestauraÃ§Ã£o da IndependÃªncia
        -- no longer holiday, maintained for completude
-    Dec   8    Imaculada Conceição
+    Dec   8    Imaculada ConceiÃ§Ã£o
     Dec  25    Natal
 
 The following Portuguese holidays have mobile dates:
 
-    Entrudo (47 days before Páscoa / Easter)
+    Entrudo (47 days before PÃ¡scoa / Easter)
        -- no longer holiday, maintained for completude
-    Sexta-feira Santa (Friday before Páscoa / Easter)
-    Páscoa (Easter)
-    Corpo de Deus (60 days after Páscoa / Easter)
+    Sexta-feira Santa (Friday before PÃ¡scoa / Easter)
+    PÃ¡scoa (Easter)
+    Corpo de Deus (60 days after PÃ¡scoa / Easter)
        -- no longer holiday, maintained for completude
 
 =head1 ACKNOWLEDGEMENTS
@@ -211,9 +214,9 @@ Date::Holidays modules.
 
 =head1 AUTHOR
 
-José Castro, C<< <cog@cpan.org> >>
+JosÃ© Castro, C<< <cog@cpan.org> >>
 
-Maintained by Alberto Simões, C<< <ambs@cpan.org> >>
+Maintained by Alberto SimÃµes, C<< <ambs@cpan.org> >>
 
 =head1 BUGS
 
@@ -224,8 +227,8 @@ automatically be notified of progress on your bug as I make changes.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2004-2015 José Castro, All Rights Reserved.
-Copyright 2005 Alberto Simões, All Rights Reserved.
+Copyright 2004-2015 JosÃ© Castro, All Rights Reserved.
+Copyright 2005 Alberto SimÃµes, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
