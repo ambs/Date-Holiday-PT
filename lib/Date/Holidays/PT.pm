@@ -145,13 +145,13 @@ sub holidays {
          15 => 'Assunção de Nossa Senhora',
        },
       10 => {
-          ($year <= 2013) ? (5 => 'Dia da Implantação da República') : (),
+          ($year <= 2012) ? (5 => 'Dia da Implantação da República') : (),
        },
       11 => {
-          ($year <= 2013) ? (1 => 'Dia de Todos-os-Santos') : (),
+          ($year <= 2012) ? (1 => 'Dia de Todos-os-Santos') : (),
        },
       12 => {
-		  ($year <= 2013) ? (1 => 'Dia da Restauração da Independência') : (),
+		  ($year <= 2012) ? (1 => 'Dia da Restauração da Independência') : (),
           8 => 'Imaculada Conceição',
          25 => 'Natal',
        },
@@ -162,7 +162,7 @@ sub holidays {
 
   my $jd = julian_day($year, $emonth, $eday);
 
-  if ($year <= 2013) {
+  if ($year <= 2012) {
 	  my (undef, $cmonth, $cday) = inverse_julian_day($jd - 47);
 	  $holidays{$cmonth}{$cday} = 'Entrudo';
 
