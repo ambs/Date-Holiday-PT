@@ -9,13 +9,15 @@ use Time::JulianDay;
 
 my @ISA = qw(Date::Holidays::Super);
 
+=encoding utf-8
+
 =head1 NAME
 
 Date::Holidays::PT - Determine Portuguese public holidays
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -139,16 +141,16 @@ sub holidays {
          10 => 'Dia de Portugal, de Camões e das Comunidades',
        },
        8 => {
-         15 => 'Assunção da Virgem',
+         15 => 'Assunção de Nossa Senhora',
        },
       10 => {
-          5 => 'Dia da Implantação da República',
+ #         5 => 'Dia da Implantação da República',
        },
       11 => {
-          1 => 'Dia de Todos-os-Santos',
+ #         1 => 'Dia de Todos-os-Santos',
        },
       12 => {
-          1 => 'Dia da Restauração da Independência',
+#          1 => 'Dia da Restauração da Independência',
           8 => 'Imaculada Conceição',
          25 => 'Natal',
        },
@@ -159,14 +161,14 @@ sub holidays {
 
   my $jd = julian_day($year, $emonth, $eday);
 
-  my (undef, $cmonth, $cday) = inverse_julian_day($jd - 47);
-  $holidays{$cmonth}{$cday} = 'Entrudo';
+#  my (undef, $cmonth, $cday) = inverse_julian_day($jd - 47);
+ # $holidays{$cmonth}{$cday} = 'Entrudo';
 
-  my (undef, $bmonth, $bday) = inverse_julian_day($jd + 60);
-  $holidays{$bmonth}{$bday} =
-              $holidays{$bmonth}{$bday} ?
-              $holidays{$bmonth}{$bday} . '; Corpo de Deus':
-              'Corpo de Deus';
+  #my (undef, $bmonth, $bday) = inverse_julian_day($jd + 60);
+  #$holidays{$bmonth}{$bday} =
+   #           $holidays{$bmonth}{$bday} ?
+    #          $holidays{$bmonth}{$bday} . '; Corpo de Deus':
+     #         'Corpo de Deus';
 
   my (undef, $smonth, $sday) = inverse_julian_day($jd - 2);
   $holidays{$smonth}{$sday} = 'Sexta-feira Santa';
@@ -185,16 +187,20 @@ The following Portuguese holidays have fixed dates:
     Aug  15    Assunção da Virgem
     Oct   5    Dia da Implantação da República
     Nov   1    Dia de Todos-os-Santos
+       -- no longer holiday, maintained for completude
     Dec   1    Dia da Restauração da Independência
+       -- no longer holiday, maintained for completude
     Dec   8    Imaculada Conceição
     Dec  25    Natal
 
 The following Portuguese holidays have mobile dates:
 
     Entrudo (47 days before Páscoa / Easter)
+       -- no longer holiday, maintained for completude
     Sexta-feira Santa (Friday before Páscoa / Easter)
     Páscoa (Easter)
     Corpo de Deus (60 days after Páscoa / Easter)
+       -- no longer holiday, maintained for completude
 
 =head1 ACKNOWLEDGEMENTS
 
@@ -205,7 +211,9 @@ Date::Holidays modules.
 
 =head1 AUTHOR
 
-Jose Castro, C<< <cog@cpan.org> >>
+José Castro, C<< <cog@cpan.org> >>
+
+Maintained by Alberto Simões, C<< <ambs@cpan.org> >>
 
 =head1 BUGS
 
@@ -216,7 +224,8 @@ automatically be notified of progress on your bug as I make changes.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2004 Jose Castro, All Rights Reserved.
+Copyright 2004-2015 José Castro, All Rights Reserved.
+Copyright 2005 Alberto Simões, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
